@@ -2,6 +2,26 @@ import math
 import numpy as np
 import matplotlib.pyplot as plt
 
+# Aufgabe 2a
+x0 = 1.0
+x1 = 0.8
+f = lambda x: x * np.sqrt(1+x)
+df = lambda x: np.sqrt(1+x) + x/(2*np.sqrt(1 + x))
+t1 = lambda x: f(x0) + (x - x0) * df(x0)
+print(t1(x0))
+
+# Aufgabe 2b
+x = np.linspace(-np.pi, np.pi, 100)
+plt.figure()
+plt.plot(x, t1(x), label='$t_1(x)$')
+plt.plot(x, f(x), '--', label="$f(x)$")
+plt.legend()
+plt.show()
+
+# Aufgabe 2c
+error = f(x1) - t1(x1)
+print(error)
+
 # Aufgabe 3a
 x0 = 0.0
 x1 = -0.6
@@ -41,3 +61,4 @@ plt.show()
 app = t3(x1)-f0(x1)
 print(app)
 
+# Aufgabe 4a
