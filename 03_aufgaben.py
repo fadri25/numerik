@@ -1,7 +1,7 @@
 import math
 import numpy as np
 import matplotlib.pyplot as plt
-"""
+
 # Aufgabe 2a
 x0 = 1.0
 x1 = 0.8
@@ -60,7 +60,7 @@ plt.show()
 # Aufgabe c
 app = t3(x1)-f0(x1)
 print(app)
-"""
+
 
 # Aufgabe 4a
 x0 = 0.0
@@ -77,3 +77,29 @@ def taylor_factory(x0, fk_list):
 
 t3 = taylor_factory(x0, fk_list)
 print(t3(x0))
+
+# Aufgabe 4b
+def taylor_factory_n(x0, n):
+    fk_list = [f(x0) for _ in range(n)]
+    derivatives = np.array([fk for fk in fk_list])
+    factorials = np.array([math.factorial(n) for n in range(len(fk_list))])
+    coefficients = derivatives / factorials
+
+    return lambda x: np.sum([ck * (x - x0)**k for k, ck in enumerate(coefficients)], axis=0)
+
+tx = taylor_factory_n(x0, 5)
+print(tx(x0))
+
+# Aufgabe 4c
+x = 1.0
+n_values = [5, 10, 20, 40]
+
+for n in n_values:
+    exact_value = np.exp(x)
+    approx_value = taylor_factory_n(x, n)
+    error = abs(exact_value - approx_value(x))
+    print(f"For n = {n}:")
+    print(f"Exact Value: {exact_value}")
+    print(f"Approximated Value: {approx_value(x)}")
+    print(f"Error: {error}\n")
+
