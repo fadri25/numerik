@@ -23,7 +23,6 @@ lst = extract(intervals)
 for i in lst:
     print(newton(f,df,i,1.0e-8))
 
-
 # Aufgabe 4b (Bisektion)
 def bisection(f, a, b, tol):
     assert(f(a) * f(b) < 0.0)
@@ -54,4 +53,28 @@ def i(x):
 print(i(3.009463168680668))
 print(i(0.883614182472229))
 print(i(-1.9930773675441742))
+"""
+A(p) = 0.01 · p und N(p) = p^-0.2 + p^-0.4
+a) Bestimmen Sie mittels Bisektion den Produktpreis auf tol = 10^-10 genau.
+b) Bestimmen Sie mit dem Newton-Verfahren den Produktpreis auf tol = 10^-10 genau
+"""
+# Aufgabe 5a
+def bisection(f, a, b, tol):
+    assert(f(a) * f(b) < 0.0)
+    while abs(b-a) > tol:
+        m = (a + b) / 2
+        fm = f(m)
+        if fm == 0.0:
+            return m, m
+        elif fm * f(b) < 0.0:
+            a = m
+        else:
+            b = m
+    return [a, b]
+
+A = lambda x: 0.01 * x
+N = lambda x: x**-0.2 + x^-0.4
+
+print(bisection(f, a, b, 10.0e-10))
+
 
