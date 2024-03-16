@@ -21,7 +21,7 @@ f = lambda x: x - 2*np.exp(-x)
 a = 0.0
 b = 1.0
 root, iterations = bisection3(f, a,b)
-print(root, iterations)
+print(f"Aufgabe 2a {root, iterations}")
 
 # Aufgabe 2b
 def newton(f, df, x, max = 3):
@@ -36,7 +36,7 @@ df = lambda x: 2*np.exp(1)
 x = 1.0
 
 root, iterations = newton(f, df, x)
-print(root, iterations)
+print(f"Aufgabe 2b {root, iterations}")
 
 # Aufgabe 3a
 def newton(f, df, x, tol):
@@ -51,7 +51,7 @@ df = lambda x: -np.exp(-x-1) - 1/(x**2+1)*2*x
 x = 0.0
 
 root, iterations = newton(f, df, x, 10.0e-10)
-print(root, iterations)
+print(f"Aufgabe 3a {root, iterations}")
 
 # Aufgabe 3b
 def bisection(f, a, b, tol):
@@ -74,9 +74,9 @@ a = 0.0
 b = 1.0
 
 root, iterations = bisection(f, a, b, 10.0e-10)
-print(root, iterations)
-# Aufgabe 4a (Newton)
+print(f"Aufgabe 3b {root, iterations}")
 
+# Aufgabe 4a (Newton)
 def find_intervals(f, x_range=(-10, 10), step=1):
     a, b = x_range
     intervals = []
@@ -98,6 +98,7 @@ intervals = find_intervals(f)
 def extract(intervals):
     return [item[0] for item in intervals]
 lst = extract(intervals)
+print("Aufgabe 4a")
 for i in lst:
     print(newton(f,df,i,1.0e-8))
 
@@ -118,13 +119,14 @@ def bisection(f, a, b, tol):
 
 f = lambda x: x**3 - 1.9*x**2 - 5.1*x + 5.3
 intervals = find_intervals(f)
+print("Aufgabe 4b")
 for sublist in intervals:
     for index, item in enumerate(sublist):
         if index == 0:
             first_item = item
         elif index == 1:
             second_item = item
-    #print(bisection(f, first_item, second_item, 1.0e-8))
+    print(bisection(f, first_item, second_item, 1.0e-8))
 
 # Überprüfung
 def i(x):
@@ -157,7 +159,7 @@ def N(p):
 def F(p):
     return A(p) - N(p)
 
-print(bisection(F,a= 0, b=1000, tol =10.0e-10))
+print(f"Aufgabe 5a {bisection(F,a= 0, b=1000, tol =10.0e-10)}")
 
 # Aufgabe 5b
 def find_intervals(f, x_range=(0.01, 100), step=0.1):
@@ -181,5 +183,6 @@ intervals = find_intervals(f)
 def extract(intervals):
     return [item[0] for item in intervals]
 lst = extract(intervals)
+print("Aufgabe 5b")
 for i in lst:
     print(newton(f,df,i,10.0e-10))
