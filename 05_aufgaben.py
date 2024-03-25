@@ -7,7 +7,6 @@ x = sp.Symbol('x')
 fx = sp.tan(x) - sp.exp(x)
 ffx = sp.diff(fx, x)
 x0 = 0.5
-print(ffx)
 def newton_optimize(x0, fx, ffx, tol=1e-10):
     it = 0
     while abs(fx.subs(x, x0)) > tol:
@@ -41,8 +40,9 @@ def newton(equations, variables, initial_guess, tol, max_iterations):
         delta_x = J_val.LUsolve(-f_val)
         x += delta_x
         it += 1
+    res_r = [float(val) for val in x]
 
-    return [float(val) for val in x], it
+    return res_r, it
 
 x, y = sp.symbols('x y')
 variables = [x, y]
@@ -52,25 +52,29 @@ max_iterations = 100
 equations3 = [-2*x**3+3*y**2 + 42, 5*x**2 + 3*y**3 - 69]
 initial_guess3 = [1.0, 1.0]
 tol3 = 1e-8
-print(f"Aufgabe 3: {newton(equations3, variables, initial_guess3, tol3, max_iterations)}")
+result3, iterations3 = newton(equations3, variables, initial_guess3, tol3, max_iterations)
+print(f"Aufgabe 3: Ergebnis: {result3}, Iterationsn: {iterations3}")
 
 # Aufgabe 4
 equations4 = [x*sp.exp(y)-1, y-1-x**2]
 initial_guess4 = [-1.0, -1.0]
 tol4 = 1e-6
-print(f"Aufgabe 4: {newton(equations4, variables, initial_guess4, tol4, max_iterations)}")
+result4, iterations4 = newton(equations4, variables, initial_guess4, tol4, max_iterations)
+print(f"Aufgabe 4: Ergebnis: {result4}, Iterationen: {iterations4}")
 
 # Aufgabe 5
 equations5 = [20*x*y**2-3*x**3-50, 4*x**2-3*y**3-4]
 initial_guess5 = [2.0, 1.0]
 tol5 = 1e-6
-print(f"Aufgabe 5: {newton(equations5, variables, initial_guess5, tol5, max_iterations)}")
+result5, iterations5 = newton(equations5, variables, initial_guess5, tol5, max_iterations)
+print(f"Aufgabe 5: Ergebnis: {result5}, Iterationen: {iterations5}")
 
 # Aufgabe 6
 equations6 = [6*x-sp.cos(x)-2*y,8*y-x*y**2-sp.sin(x)]
 initial_guess6 = [0.0, 0.0]
 tol6 = 1e-4
-print(f"Aufgabe 6: {newton(equations6, variables, initial_guess6, tol6, max_iterations)}")
+result6, iterations6 = newton(equations6, variables, initial_guess6, tol6, max_iterations)
+print(f"Aufgabe 6: Ergebnis: {result6}, Iterationen: {iterations6}")
 
 # Aufgabe 7a
 """
@@ -96,5 +100,7 @@ equations7 = [x**2-y-1,(x-2)**2+(y-1/2)**2-1]
 initial_guess7a = [1.0, 0.1]
 initial_guess7b = [1.5, 1.4]
 tol7 = 1e-4
-print(f"Aufgabe 7b x1: {newton(equations7, variables, initial_guess7a, tol7, max_iterations)}")
-print(f"Aufgabe 7b x2: {newton(equations7, variables, initial_guess7b, tol7, max_iterations)}")
+result7a, iterations7a = newton(equations7, variables, initial_guess7a, tol7, max_iterations)
+result7b, iterations7b = newton(equations7, variables, initial_guess7b, tol7, max_iterations)
+print(f"Aufgabe 7b x1: Ergebnis: {result7a}, Iterationen: {iterations7a}")
+print(f"Aufgabe 7b x2: Ergebnis: {result7b}, Iterationen: {iterations7b}")
