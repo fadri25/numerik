@@ -6,13 +6,15 @@ import matplotlib.pyplot as plt
 x = sp.Symbol('x')
 fx = sp.tan(x) - sp.exp(x)
 ffx = sp.diff(fx, x)
-x0 = 0.5
-def newton_optimize(x0, fx, ffx, tol=1e-10):
+fffx = sp.diff(ffx,x)
+x0 = 1.0
+
+def newton_optimize(x0, ffx, fffx, tol=1e-10):
     it = 0
-    while abs(fx.subs(x, x0)) > tol:
-        f_val = fx.subs(x, x0)
-        ffval = ffx.subs(x, x0)
-        x0 -= f_val / ffval
+    while abs(ffx.subs(x, x0)) > tol:
+        f_v = ffx.subs(x,x0)
+        ff_v = fffx.subs(x,x0)
+        x0 -= f_v / ff_v
         it += 1
 
     minimum_x = x0
@@ -20,9 +22,9 @@ def newton_optimize(x0, fx, ffx, tol=1e-10):
     return minimum_x, minimum_f, it
 
 print("Aufgabe 2:")
-minimum_x, minimum_f, iterations = newton_optimize(x0, fx, ffx)
-print(f"Minimum bei x = {minimum_x:.10f}")
-print(f"f(x) am Minimum = {minimum_f:.10f}")
+minimum_x, minimum_f, iterations = newton_optimize(x0, ffx, fffx)
+print(f"Minimum bei x = {minimum_x}") #:.10f
+print(f"f(x) am Minimum = {minimum_f}")
 print(f"Anzahl der Iterationen: {iterations}")
 
 
