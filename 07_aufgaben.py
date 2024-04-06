@@ -7,9 +7,8 @@ Z = sp.Matrix([[-1, 1, 1],
                [1, -3, -2],
                [5, 1, 4]])
 
-P9 = Z.LUdecomposition()
-L9 = Z.LUdecomposition()
-print(f"Aufgabe 3b: P = {P9}, L = {L9}") # U ist noch leer
+P9, L9, U9 = Z.LUdecomposition()
+print(f"Aufgabe 3b: A = {P9}, b = {L9}") # U ist noch leer
 
 # Aufgabe 3a
 x = sp.Symbol('x')
@@ -38,7 +37,7 @@ A = sp.Matrix([[1, 2, -1, 9],
                [3, 1, 0, 9]])
 
 P, L, U = A.LUdecomposition()
-print(f"Aufgabe 3b: P = {P}, L = {L}, U = {U}") # U ist noch leer
+print(f"Aufgabe 3b: A = {P}, b = {L}") # U ist noch leer
  
 # Aufgabe 3c
 B = np.array([[1, 2, -1],
