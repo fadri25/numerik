@@ -37,8 +37,8 @@ A = sp.Matrix([[1, 2, -1, 9],
                [3, 1, 0, 9]])
 
 P, L, U = A.LUdecomposition()
-print(f"Aufgabe 3b: A = {P}, b = {L}") # U ist noch leer
- 
+print(f"Aufgabe 3b: A = {P}, b = {L}")
+
 # Aufgabe 3c
 B = np.array([[1, 2, -1],
                [4, -2, 6],
@@ -81,7 +81,6 @@ print(f"Aufgabe 5a: {np.linalg.norm(g-x_exakt)/np.linalg.norm(x_exakt)*100}")
 # Aufgabe 5b
 cond_A = format(np.linalg.cond(F))
 print(f"Aufgabe 5b: Kondition = {cond_A}")
-
 
 # Aufgabe 6
 K = np.array([[1, 2, -1],
