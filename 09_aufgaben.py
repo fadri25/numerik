@@ -94,7 +94,7 @@ anteile = np.array([0.5, 8.2, 15, 22.9, 36.6, 51, 56.3, 61.8, 65, 76.7])
 jahre_verschoben = jahre - 1981
 koeffizienten = np.polyfit(jahre_verschoben, anteile, deg=len(jahre)-1)
 interpolationspolynom_a = np.poly1d(koeffizienten)
-anteil_1983_a = interpolationspolynom_a(2)  # 1983 - 1981 = 2 Jahre nach der Zeitachse-Verschiebung
+anteil_1983_a = interpolationspolynom_a(2) 
 
 # b
 spline_interpolation = interp1d(jahre, anteile, kind='cubic')
