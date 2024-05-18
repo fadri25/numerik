@@ -66,7 +66,7 @@ interpolating_polynomial = lagrange_interpolation(x_val3[:missing_index] + x_val
                                                   y3[:missing_index] + y3[missing_index + 1:],x)
 missing_y_value = interpolating_polynomial.subs(x, x_val3[missing_index])
 
-print("Aufgabe 2:", missing_y_value)
+print("Aufgabe 3:", missing_y_value)
 
 # Aufgabe 4a
 x_val4 = [-1, 0, 2, 3]
