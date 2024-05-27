@@ -2,6 +2,7 @@ import numpy as np
 import sympy as sp
 import matplotlib.pyplot as plt
 from scipy.integrate import solve_ivp
+
 """
 # Aufgabe 2
 f = lambda t, y : y/t-t**2/2
@@ -101,6 +102,4 @@ system_of_eqs = (sp.Eq(sp.diff(x(t), t), dx_dt),
 
 solution = sp.dsolve(system_of_eqs, ics=ics)
 print(solution)
-
-
 
