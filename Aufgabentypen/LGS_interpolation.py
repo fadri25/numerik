@@ -1,7 +1,7 @@
 import sympy as sp
 import numpy as np
 from scipy.optimize import minimize
-
+"""
 # LGS dass Vektor durch die Punkte in der Tabelle geht
 a0, a1, a2 = sp.symbols('a0 a1 a2')
 x = sp.Symbol('x')
@@ -17,10 +17,7 @@ for xi, yi in zip(x_values, y_values):
 solutions = sp.solve(equations, (a0, a1, a2)) # Lösen des Gleichungssystems
 
 print(f"Lösungen für a0, a1, a2: {solutions}")
-
+"""
 # Fehlerquadratsumme minimieren
-
-
-
 
 

@@ -1,6 +1,8 @@
 import numpy as np
 import sympy as sp
 import math
+import matplotlib.pyplot as plt
+
 
 # Erste n Ableitungen berechnen:
 x = sp.Symbol('x')
@@ -9,15 +11,15 @@ ffx = sp.diff(fx, x)
 fffx = sp.diff(ffx,x)
 ffffx = sp.diff(fffx,x) # Das wäre die dritte usw....
 
-print(f'Erste Ableitung: {ffx}')
-print(f"Zweite Ableitung: {fffx}")
-
+#print(f'Erste Ableitung: {ffx}')
+#print(f"Zweite Ableitung: {fffx}")
+sp.pprint(fx)
 
 # Taylor-Polynom berechnen
 x = sp.Symbol('x')
 x0 = 2.0  # Stelle x0
 
-f = sp.cos((1/3 * x)**3 + (1/2 * x)**2 - x - 1)  # Funktion
+f = 1/3*x**3 + 1/2*x*2 - x - 1  # Funktion
 f0 = f
 f1 = sp.diff(f, x)
 f2 = sp.diff(f1, x)
@@ -31,16 +33,13 @@ def taylor_factory(x0, fk_list):
 
 # Taylor-Polynom zweiter Ordnung
 t2 = taylor_factory(x0, fk_list)
-print("Taylor-Polynom:", t2)
+#print("Taylor-Polynommm:", t2)
 
 # Fehler an Stelle x
 x1 = 8/5  # Fehlerstelle
 f0_x1 = f.subs(x, x1)
 t2_x1 = t2.subs(x, x1)
-print("Originalfunktion an x1:", f0_x1)
-print("Taylor-Polynom an x1:", t2_x1)
+#print("Originalfunktion an x1:", f0_x1)
+#print("Taylor-Polynom an x1:", t2_x1)
 app = t2_x1 - f0_x1
-print("Approximation:", app)
-
-
-
+#print("Approximation:", app)

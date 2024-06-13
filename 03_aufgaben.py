@@ -42,7 +42,7 @@ def taylor_factory(x0, fk_list):
     return lambda x: np.sum([ck * (x - x0)**k for k, ck in enumerate(coefficients)], axis=0)
 
 t3 = taylor_factory(x0, fk_list)
-print(t3(x0))
+print(f"moi {t3(x0)}")
 
 """
 # Aufgabe 3b
@@ -61,7 +61,7 @@ plt.show()
 # Aufgabe c
 app = t3(x1)-f0(x1)
 print(app)
-"""
+
 
 # Aufgabe 4a
 x0 = 0.0
@@ -90,7 +90,7 @@ def taylor_factory_n(x0, n):
 
 tx = taylor_factory_n(x0, 5)
 print(tx(x0))
-
+"""
 # Aufgabe 4c
 x = 1.0
 n_values = [5, 10, 20, 40]

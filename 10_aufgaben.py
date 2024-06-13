@@ -118,7 +118,7 @@ eq1 = sp.Eq(w0 + w1 + w2, 2)
 eq2 = sp.Eq(w1 * (3/4) + w2 * 2, 2)
 eq3 = sp.Eq(w1 * (3/4)**2 + w2 * 2**2, 8/3)
 weights = sp.solve((eq1, eq2, eq3), (w0, w1, w2)) # Löst das Gleichungssystem und daraus ergeben sich die Gewichte w0,w1 und w2
-
+print(f'Weights: {weights}')
 # Aufgabe 5b
 f = sp.exp(-x**2) # Integral aus Aufgabe
 Q = weights[w0] * f.subs(x, 0) + weights[w1] * f.subs(x, 3/4) + weights[w2] * f.subs(x, 2) # Quadraturformel mit berechneten w Werten

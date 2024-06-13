@@ -18,3 +18,26 @@ plt.plot(xdat, ydat, 'o')
 
 print("Fehlerquadratsumme=", np.linalg.norm(A@p-ydat))
 
+"""
+import numpy as np
+import matplotlib.pyplot as plt
+
+n = 30
+x = np.linspace(-2.5, 2.5, n)
+noise = np.random.rand(n) - 0.5
+y = 2.0 * x + 3.0 + noise
+
+A = np.column_stack((np.ones(n), x))
+AT = np.transpose(A)
+b, m = np.linalg.solve(AT @ A, np.dot(AT, y))
+print(m, b)
+
+p = np.array([b, m])
+r = y - np.dot(A, p)  # Residuum
+print('Fehlerquadratsumme:', np.linalg.norm(r)**2)
+
+plt.figure()
+plt.plot(x, y, 'bo')
+plt.plot(x, m * x + b, 'r-')
+plt.show()
+"""

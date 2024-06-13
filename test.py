@@ -145,5 +145,19 @@ plt.plot(xdat, ydat, 'o')
 plt.show()
 
 """
+ 
+x = np.array([0, 3/4, 2])
 
-
+A = np.array([[1, 1, 1],
+            [0, 3/4, 2],
+            [0, (3/4)**2, 2**2]]) #mein versuch mit dem hoch 2
+ 
+#Integrale ausrechnen für f(x) = 1, f(x) = x, f(x) = x**2 von a = 0 bis b = 2
+#stimmt aber nicht weil es nicht Polynom ist
+x = sp.Symbol('x')
+f = x**2; a = 0; b = 2
+definite_integral = sp.integrate(f, (x, a, b))
+ 
+b = np.array([2, 2, 8/3])
+w = np.linalg.solve(A, b)
+print("Gewichte: ", w) #stimmen nicht
